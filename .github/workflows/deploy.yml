@@ -1,0 +1,74 @@
+# Push to main  -> build + deploy to production (https://sweetcone.prathamadityasalhotra.workers.dev)
+# Pull request  -> build + upload a preview version; its link is posted on the PR. Production is untouched.
+name: Deploy to Cloudflare
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: deploy-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.event_name == 'pull_request' && 'preview' || 'production' }}
+      url: ${{ steps.url.outputs.url }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Build
+        run: node scripts/build.mjs
+
+      - name: Pick preview alias
+        id: alias
+        if: github.event_name == 'pull_request'
+        env:
+          BRANCH: ${{ github.head_ref }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          alias=$(printf '%s' "$BRANCH" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+//' | cut -c1-30 | sed -E 's/-+$//')
+          echo "name=${alias:-pr-$PR}" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy
+        id: deploy
+        # PRs from forks get no secrets, so they stop after the build check.
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+        uses: cloudflare/wrangler-action@953926a2e2182532811c01a25e53647d93bf07c0 # v4.1.3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.143.1"
+          command: ${{ github.event_name == 'pull_request' && format('versions upload --preview-alias {0}', steps.alias.outputs.name) || 'deploy' }}
+
+      - name: Resolve URL
+        id: url
+        if: steps.deploy.outcome == 'success'
+        env:
+          OUTPUT: ${{ steps.deploy.outputs.command-output }}
+          FALLBACK: ${{ steps.deploy.outputs.deployment-url }}
+        run: |
+          alias_url=$(printf '%s\n' "$OUTPUT" | sed -nE 's/.*Preview Alias URL: (https:[^ ]+).*/\1/p' | head -n1)
+          url="${alias_url:-$FALLBACK}"
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "### 🍦 Deployed: $url" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Post preview link on the PR
+        if: github.event_name == 'pull_request' && steps.url.outputs.url != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          URL: ${{ steps.url.outputs.url }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          body="🍦 Preview is live: ${URL} (commit ${SHA::7})"
+          gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --edit-last --body "$body" 2>/dev/null \
+            || gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body "$body"

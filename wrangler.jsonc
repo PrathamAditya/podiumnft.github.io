@@ -1,0 +1,10 @@
+// Cloudflare Workers static-assets site. `node scripts/build.mjs` fills ./dist before every deploy.
+{
+  "name": "sweetcone",
+  "compatibility_date": "2026-09-26",
+  "assets": {
+    "directory": "./dist"
+  },
+  "workers_dev": true,
+  "preview_urls": true
+}

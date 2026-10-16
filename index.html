@@ -1,144 +1,327 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>sweetCone</title>
-  <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="font.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>sweetCone · vivid &amp; joyous cones</title>
+  <meta name="description" content="sweetCone is a collection of 5,555 vivid and joyous cones made from hundreds of hand-picked traits. Build your own in the Cone Lab.">
+  <meta name="theme-color" content="#FFF5EB">
+  <meta property="og:title" content="sweetCone">
+  <meta property="og:description" content="The collection of vivid and joyous cones.">
+  <meta property="og:image" content="images/web/og.jpg">
+  <link rel="icon" href="images/web/favicon-64.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/web/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
-<link rel="shortcut icon" href="images/favicon-modified.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="font.css">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    document.documentElement.classList.add('js');
+    try { if (localStorage.getItem('sc-theme') === 'night') document.documentElement.dataset.theme = 'night'; } catch (e) {}
+  </script>
 </head>
 
-<body class="body">
-  <header>
-    <h1 class="logo" id="logo">
-      <span style="color:#80B1FF">s</span><span style="color:#C5C5FF">w</span><span style="color:#A4A4F4">e</span><span style="color:#FFD2EA">e</span><span style="color:#FFC2DF">t</span><span style="color:#FFA4D4">C</span><span
-        style="color:#FFCC99">o</span><span style="color:#FFE98A">n</span><span style="color:#79E8B3">e</span>
-       </h1>
-    <label class="sr-only mobile-nav-toggle-top">
-    <input class=" mobile-nav-toggle  box" type="checkbox" checked="false" aria-controls="primary-navigation" aria-expanded="false">
-    <div class="bar">
-      <span class="top" aria-expanded="false"></span>
-      <span class="middle" aria-expanded="false"></span>
-      <span class="bottom" aria-expanded="false"></span>
-    </div>
-    </label>
-    <nav>
+<body>
+  <a class="skip" href="#lab">Skip to the Cone Lab</a>
 
-      <ul id="primary-navigation" class="primary-navigation" data-visible="false">
-        <li><a data-page="home" href="/">Home</a></li>
-        <li><a data-page="roadmap" href="/roadmap">Roadmap</a></li>
-        <li><a data-page="team" href="/faqs">FAQs</a></li>
-        <li><div class="social">
-            <a target="_blank" href="https://twitter.com/sweetconenft" ><img src="images/twitter.png" class="twitter"
-                  loading="lazy" alt="twitter" /></a>
-          <a target="_blank" class="discord"><img src="images/discord.png"  alt="Discord"
-                  class="discord" /></a>
-          </div>
-        </div></li>
-        <div class="bubble">
+  <div class="awning-wrap" aria-hidden="true"><div class="awning"></div></div>
 
-        </div>
+  <header class="site-header" id="top">
+    <a class="logo" href="#home" aria-label="sweetCone home">
+      <span style="color:#80B1FF">s</span><span style="color:#C5C5FF">w</span><span style="color:#A4A4F4">e</span><span style="color:#FFD2EA">e</span><span style="color:#FFC2DF">t</span><span style="color:#FFA4D4">C</span><span style="color:#FFCC99">o</span><span style="color:#FFE98A">n</span><span style="color:#79E8B3">e</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span><span class="sr">Menu</span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" data-spy="home">Home</a></li>
+        <li><a href="#lab" data-spy="lab">Cone Lab</a></li>
+        <li><a href="#flavours" data-spy="flavours">Flavours</a></li>
+        <li><a href="#about" data-spy="about">About</a></li>
+        <li><a href="#team" data-spy="team">Team</a></li>
+        <li><a href="#faq" data-spy="faq">FAQ</a></li>
+        <li class="nav-pill" aria-hidden="true"></li>
       </ul>
     </nav>
+
+    <div class="header-actions">
+      <a class="icon-btn" href="https://twitter.com/sweetconenft" target="_blank" rel="noopener" aria-label="sweetCone on Twitter">
+        <img src="images/twitter.png" alt="" width="20" height="20">
+      </a>
+      <span class="icon-btn is-soon" title="Discord: coming soon" aria-label="Discord, coming soon" role="img">
+        <img src="images/discord.png" alt="" width="20" height="20">
+      </span>
+      <button class="icon-btn theme-toggle" aria-pressed="false" aria-label="Night shift">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      </button>
+    </div>
+    <div class="progress" aria-hidden="true"></div>
   </header>
-  <section data-index="0" class="home" id="home">
-    <div id="page" class="div-block-3">
-      <div class="section-2 wf-section">
-        <h1 class="heading-2" id="head">
-          <span style="color:#80B1FF">s</span><span style="color:#C5C5FF">w</span><span style="color:#A4A4F4">e</span><span style="color:#FFD2EA">e</span><span style="color:#FFC2DF">t</span><span style="color:#FFA4D4">C</span><span
-            style="color:#FFCC99">o</span><span style="color:#FFE98A">n</span><span style="color:#79E8B3">e</span>
+
+  <main>
+    <!-- ───────────── HERO ───────────── -->
+    <section class="hero" id="home" data-section>
+      <div class="doodles" aria-hidden="true">
+        <span class="doodle" style="--x:1.5%;--y:6%;--d:.6;--s:46px;--c:var(--rose)"><svg viewBox="-16 -16 32 26"><path d="M0 8C-14-2-12-14-5-14C-2-14 0-12 0-9C0-12 2-14 5-14C12-14 14-2 0 8Z"/></svg></span>
+        <span class="doodle" style="--x:44%;--y:8%;--d:1;--s:54px;--c:var(--lav)"><svg viewBox="0 0 52 52"><path d="M34 6A22 22 0 1 0 46 40A18 18 0 0 1 34 6Z"/></svg></span>
+        <span class="doodle" style="--x:90%;--y:12%;--d:.4;--s:40px;--c:var(--yellow)"><svg viewBox="-20 -20 40 40"><g stroke="#1d1b2e" stroke-width="2.5"><circle cy="-9" r="8"/><circle cx="8.6" cy="-2.8" r="8"/><circle cx="5.3" cy="7.3" r="8"/><circle cx="-5.3" cy="7.3" r="8"/><circle cx="-8.6" cy="-2.8" r="8"/><circle r="5.5" fill="#FFA4D4"/></g></svg></span>
+        <span class="doodle" style="--x:3%;--y:72%;--d:.8;--s:34px;--c:var(--blue)"><svg viewBox="-12 -12 24 24"><path d="M0-12Q2-2 12 0Q2 2 0 12Q-2 2-12 0Q-2-2 0-12Z"/></svg></span>
+        <span class="doodle" style="--x:52%;--y:84%;--d:.5;--s:40px;--c:var(--yellow)"><svg viewBox="-16 -16 32 26"><path d="M0 8C-14-2-12-14-5-14C-2-14 0-12 0-9C0-12 2-14 5-14C12-14 14-2 0 8Z"/></svg></span>
+        <span class="doodle" style="--x:94%;--y:78%;--d:1.2;--s:46px;--c:var(--mint)"><svg viewBox="0 0 52 52"><path d="M34 6A22 22 0 1 0 46 40A18 18 0 0 1 34 6Z"/></svg></span>
+        <span class="doodle doodle-web" style="--x:27%;--y:0%;--d:.7;--s:58px"><svg viewBox="-30 -30 60 80"><g fill="none" stroke="#A4A4F4" stroke-width="1.8"><path d="M0 0L0-26M0 0L18-18M0 0L26 0M0 0L18 18M0 0L0 26M0 0L-18 18M0 0L-26 0M0 0L-18-18"/><path d="M0-9L6-6L9 0L6 6L0 9L-6 6L-9 0L-6-6Z M0-17L12-12L17 0L12 12L0 17L-12 12L-17 0L-12-12Z M0-25L18-18L25 0L18 18L0 25L-18 18L-25 0L-18-18Z"/></g><path d="M0 0V38" stroke="#1d1b2e" stroke-width="1.2"/><g fill="#1d1b2e"><ellipse cy="44" rx="5" ry="6"/><circle cy="37" r="3.4"/></g><path d="M-4 41l-6-3M-4 44h-7M-4 47l-6 3M4 41l6-3M4 44h7M4 47l6 3" stroke="#1d1b2e" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        <span class="doodle" style="--x:70%;--y:4%;--d:.9;--s:26px;--c:var(--rose)"><svg viewBox="-12 -12 24 24"><path d="M0-12Q2-2 12 0Q2 2 0 12Q-2 2-12 0Q-2-2 0-12Z"/></svg></span>
+      </div>
+
+      <div class="hero-copy">
+        <p class="pill"><span class="pill-dot"></span>5,555 vivid &amp; joyous cones</p>
+        <h1 class="wordmark" id="wordmark" aria-label="sweetCone">
+          <span style="color:#80B1FF">s</span><span style="color:#C5C5FF">w</span><span style="color:#A4A4F4">e</span><span style="color:#FFD2EA">e</span><span style="color:#FFC2DF">t</span><span style="color:#FFA4D4">C</span><span style="color:#FFCC99">o</span><span style="color:#FFE98A">n</span><span style="color:#79E8B3">e</span>
         </h1>
-        <p class = "paragraph">The collection of vivid and
-          joyous cones.</p>
-      </div>
-      <div class="section-3 wf-section" data-aos="zoom-in">
-        <img src="images/img/1.png" loading="lazy" width="166" height="100" class="image-2" id="nft1" />
-        <img src="images/img/2.png" alt="" class="image-3" id="nft2" />
-      </div>
-    </div>
-  </section>
-  <section data-index="1" class="roadmap" id="about">
-
-    <div id="page">
-
-
-      <div class="wf-section">
-        <h2 class="heading-3"><span class="text-span">About</span></h2>
-      </div>
-      <div class="columns w-row">
-        <div class="collection">
-          <img class="collections" src="images/sample.png" alt="collection">
+        <p class="tagline">The collection of vivid and joyous cones. Hundreds of hand-picked traits, one very happy freezer.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#lab">Build your own cone <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="#flavours">Meet the flavours</a>
         </div>
-        <div class="phases">
-        <p class = "aboutpa" data-aos="slide-up">sweetCone NFT is a collection of 5555 colorful cones which consist of more than hundreds of different traits and hand-picked traits. 
-          <br>
-          <br>
-          Owning a sweetCone will also give you access to the community of other sweetcone owners where you can interact with each other.  And give you early bird access to the upcoming projects.
-        </p>
+        <p class="hint" aria-hidden="true">psst… poke the letters</p>
       </div>
+
+      <div class="deck-wrap">
+        <div class="hero-deck tilt" id="deck" role="button" tabindex="0" aria-label="Deal the next sweetCone card">
+          <figure class="deck-card holo-card" data-pos="0"><img src="images/web/cone-2.webp" width="900" height="900" alt="sweetCone with a banana scoop, a halo and a bow on lavender with hearts"></figure>
+          <figure class="deck-card holo-card" data-pos="1"><img src="images/web/cone-3.webp" width="900" height="900" alt="sweetCone with a holographic scoop and verified shades on a sunburst"></figure>
+          <figure class="deck-card holo-card" data-pos="2"><img src="images/web/cone-1.webp" width="900" height="900" alt="sweetCone with a strawberry scoop and round glasses under a starry sky"></figure>
+          <figure class="deck-card holo-card" data-pos="3"><img src="images/web/cone-4.webp" width="900" height="900" alt="sweetCone with a blueberry scoop and a pink flower on a rainbow background" loading="lazy"></figure>
+          <figure class="deck-card holo-card" data-pos="4"><img src="images/web/cone-5.webp" width="900" height="900" alt="sweetCone with a strawberry scoop, a halo and glasses on mint" loading="lazy"></figure>
+          <figure class="deck-card holo-card" data-pos="5"><img src="images/web/cone-6.webp" width="900" height="900" alt="sweetCone with a peach scoop, a halo and a spider web on lavender" loading="lazy"></figure>
+        </div>
+        <p class="deck-hint" aria-hidden="true">tap to deal ✦</p>
       </div>
+    </section>
+
+    <!-- ───────────── MARQUEE ───────────── -->
+    <div class="bands" aria-hidden="true">
+      <div class="band band-a"><div class="band-track">
+        <span>5,555 cones</span><i>✦</i><span>100+ hand-picked traits</span><i>✦</i><span>holder community</span><i>✦</i><span>early-bird access</span><i>✦</i><span>vivid &amp; joyous</span><i>✦</i>
+        <span>5,555 cones</span><i>✦</i><span>100+ hand-picked traits</span><i>✦</i><span>holder community</span><i>✦</i><span>early-bird access</span><i>✦</i><span>vivid &amp; joyous</span><i>✦</i>
+      </div></div>
+      <div class="band band-b"><div class="band-track">
+        <span>brain freeze guaranteed</span><i>🍦</i><span>no cones were melted</span><i>🍦</i><span>sprinkles on everything</span><i>🍦</i><span>lick responsibly</span><i>🍦</i>
+        <span>brain freeze guaranteed</span><i>🍦</i><span>no cones were melted</span><i>🍦</i><span>sprinkles on everything</span><i>🍦</i><span>lick responsibly</span><i>🍦</i>
+      </div></div>
     </div>
-    </div>
-  </section>
-  <section data-index="2" class="team" id="team">
-    <div class="team-section">
-  <div class="text-block-13">Team</div>
-    
-    <div class="teammembers">
-      <div class="member1">
-          <div >
-            <img class="image-7" src="images/podium.png">
+
+    <!-- ───────────── CONE LAB ───────────── -->
+    <section class="section lab" id="lab" data-section>
+      <div class="section-head reveal">
+        <p class="eyebrow">The Cone Lab</p>
+        <h2>Scoop up your own sweetCone</h2>
+        <p>Mix traits from the flavour book, roll the dice, stash your favourites in the freezer. <strong id="comboCount">Millions of</strong> possible cones, and every one of them is happy to see you.</p>
+      </div>
+
+      <div class="lab-grid">
+        <div class="lab-card reveal">
+          <div class="lab-stage" id="labStage" title="Boop the cone">
+            <div class="lab-svg" id="labSvg"></div>
+            <div class="say" id="labSay" role="status" aria-live="polite"></div>
           </div>
-          <h3 class="name"><a href="https://twitter.com/frank_at_work" target="_blank">@frank</a></h1>
-          <h4 class="role">Tech Lead</h4>
-      </div>
-      <div class="member2">
-        <div >
-          <img class="image-7" src="images/amoeba.png">
+          <div class="lab-meta">
+            <div>
+              <p class="lab-no" id="labNo">Lab #0000</p>
+              <h3 class="lab-name" id="labName">Bright Strawberry</h3>
+            </div>
+            <span class="tier" id="labTier">Common</span>
+          </div>
+          <p class="lab-odds" id="labOdds"></p>
+          <div class="lab-actions">
+            <button class="btn btn-primary" id="labRoll"><span aria-hidden="true">🎲</span> Surprise me</button>
+            <button class="btn btn-soft" id="labFreeze">Add to freezer</button>
+            <button class="btn btn-soft btn-sm" id="labSave">Save PNG</button>
+            <button class="btn btn-soft btn-sm" id="labLink">Copy link</button>
+          </div>
         </div>
-        <h3 class="name"><a href="https://twitter.com/amoebaHere" target="_blank">@amoeba</a></h1>
-        <h4 class="role">Lead Artist</h4>
-    </div>
-    <div class="member1">
-      <div >
-        <img class="image-7" src="images/code.png">
+
+        <div class="lab-traits" id="labTraits"></div>
       </div>
-      <h3 class="name"><a href="https://twitter.com/psedocode" target="_blank">@code</a></h1>
-      <h4 class="role">Developer</h4>
-  </div>
-  <div class="member2">
-    <div >
-      <img class="image-7" src="images/soul.png">
-    </div>
-    <h3 class="name"><a href="https://twitter.com/soul_lives_here" target="_blank">@soul</a></h1>
-    <h4 class="role">Community manager</h4>
-</div>
-    </div>
-  </div>
-  </section>
 
-  <div class="wf-section">
-    <div class="text-block-17" >©2024 SWEETCONE | ALL RIGHTS RESERVED
-      <br>
-      for enquires - <span ><a class="mail" href="mailto:contact@sweetcone.art">contact@sweetcone.art</a></span>
+      <div class="freezer reveal" id="freezer" hidden>
+        <div class="freezer-head">
+          <h3>Your freezer <span id="freezerCount"></span></h3>
+          <p>Saved in this browser only. Tap a cone to bring it back.</p>
+        </div>
+        <div class="freezer-shelf" id="freezerShelf"></div>
+      </div>
+    </section>
+
+    <!-- ───────────── FLAVOURS ───────────── -->
+    <section class="section flavours" id="flavours" data-section>
+      <div class="section-head reveal">
+        <p class="eyebrow">The Flavours</p>
+        <h2>Straight from the freezer</h2>
+        <p>A few real cones from the collection. Tilt them, open them up, or send one to the Lab to remix.</p>
+      </div>
+
+      <div class="flavour-grid">
+        <article class="flavour reveal" style="--accent:#3E3B78">
+          <button class="flavour-art tilt holo-card" data-lightbox="0" aria-label="Open Starry Strawberry"><img src="images/web/cone-1.webp" width="900" height="900" loading="lazy" alt="sweetCone with a strawberry scoop and round glasses under a starry sky"></button>
+          <h3>Starry Strawberry</h3>
+          <ul class="tags"><li>Starry Night</li><li>Strawberry</li><li>Reading Glasses</li><li>Polka Dot</li></ul>
+          <button class="remix" data-remix="night,strawberry,dots,happy,tongue,none,round,none,none">Remix in the Lab <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="flavour reveal" style="--accent:#A4A4F4">
+          <button class="flavour-art tilt holo-card" data-lightbox="1" aria-label="Open Banana Bowtie"><img src="images/web/cone-2.webp" width="900" height="900" loading="lazy" alt="sweetCone with a banana scoop, a halo and a bow on lavender with hearts"></button>
+          <h3>Banana Bowtie</h3>
+          <ul class="tags"><li>Lavender Hearts</li><li>Banana</li><li>Halo</li><li>Bow</li><li>Rainbow Swirl</li></ul>
+          <button class="remix" data-remix="hearts,banana,swirl,dots,smile,none,none,bow,halo">Remix in the Lab <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="flavour reveal" style="--accent:#FFE98A">
+          <button class="flavour-art tilt holo-card" data-lightbox="2" aria-label="Open Verified Holo"><img src="images/web/cone-3.webp" width="900" height="900" loading="lazy" alt="sweetCone with a holographic scoop and verified shades on a sunburst"></button>
+          <h3>Verified Holo</h3>
+          <ul class="tags"><li>Sunburst</li><li>Holographic</li><li>Verified Shades</li><li>Halo</li></ul>
+          <button class="remix" data-remix="sunburst,holo,holo,dots,smile,none,verified,none,halo">Remix in the Lab <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="flavour reveal" style="--accent:#99E2FF">
+          <button class="flavour-art tilt holo-card" data-lightbox="3" aria-label="Open Blueberry Bloom"><img src="images/web/cone-4.webp" width="900" height="900" loading="lazy" alt="sweetCone with a blueberry scoop and a pink flower on a rainbow background"></button>
+          <h3>Blueberry Bloom</h3>
+          <ul class="tags"><li>Rainbow Melt</li><li>Blueberry</li><li>Flower</li><li>Jelly Bean</li></ul>
+          <button class="remix" data-remix="rainbow,blueberry,beans,dots,tongue,none,none,flower,none">Remix in the Lab <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="flavour reveal" style="--accent:#B3FFC7">
+          <button class="flavour-art tilt holo-card" data-lightbox="4" aria-label="Open Minty Side-eye"><img src="images/web/cone-5.webp" width="900" height="900" loading="lazy" alt="sweetCone with a strawberry scoop, a halo and glasses on mint"></button>
+          <h3>Minty Side-eye</h3>
+          <ul class="tags"><li>Mint Fizz</li><li>Strawberry</li><li>Halo</li><li>Reading Glasses</li></ul>
+          <button class="remix" data-remix="mint,strawberry,beans,googly,cat,none,round,none,halo">Remix in the Lab <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="flavour reveal" style="--accent:#FFC2DF">
+          <button class="flavour-art tilt holo-card" data-lightbox="5" aria-label="Open Spooky Peach"><img src="images/web/cone-6.webp" width="900" height="900" loading="lazy" alt="sweetCone with a peach scoop, a halo and a spider web on lavender"></button>
+          <h3>Spooky Peach</h3>
+          <ul class="tags"><li>Lavender</li><li>Peach Melba</li><li>Halo</li><li>Spider Web</li></ul>
+          <button class="remix" data-remix="hearts,peach,beans,sleepy,smile,none,none,web,halo">Remix in the Lab <span aria-hidden="true">→</span></button>
+        </article>
+      </div>
+
+      <figure class="collection-peek reveal">
+        <img src="images/web/collection.webp" width="1800" height="1058" loading="lazy" alt="A grid of fifteen different sweetCones in pastel colours">
+        <figcaption>…and a peek at the rest of the gang.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ───────────── ABOUT ───────────── -->
+    <section class="section about" id="about" data-section>
+      <div class="about-grid">
+        <div class="about-copy reveal">
+          <p class="eyebrow">About</p>
+          <h2>Small cones,<br>big feelings.</h2>
+          <p>sweetCone NFT is a collection of <strong>5,555 colourful cones</strong>, made from hundreds of different, hand-picked traits.</p>
+          <p>Owning a sweetCone also gives you access to the community of other sweetCone owners, where you can interact with each other, plus <strong>early-bird access</strong> to upcoming projects.</p>
+        </div>
+        <div class="stats">
+          <div class="stat reveal" style="--c:var(--rose)"><span class="num" data-count="5555">5,555</span><span class="lbl">cones in the collection</span></div>
+          <div class="stat reveal" style="--c:var(--yellow)"><span class="num" data-count="100" data-suffix="+">100+</span><span class="lbl">hand-picked traits</span></div>
+          <div class="stat reveal" style="--c:var(--mint)"><span class="num" data-count="4">4</span><span class="lbl">people behind the counter</span></div>
+          <div class="stat reveal" style="--c:var(--aqua)"><span class="num">∞</span><span class="lbl">sprinkles (we lost count)</span></div>
+        </div>
+      </div>
+
+      <div class="perks">
+        <article class="perk reveal" style="--c:var(--pink)">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="18" r="8"/><circle cx="33" cy="18" r="8"/><path d="M5 40c1-7 6-11 12-11s11 4 12 11M21 40c1-7 6-11 12-11s11 4 12 11"/></svg>
+          <h3>Holder community</h3>
+          <p>Your sweetCone is your ticket into a community of fellow owners, where you can meet and interact with each other.</p>
+        </article>
+        <article class="perk reveal" style="--c:var(--seafoam)">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5l5.5 11.5L42 18l-9 8.8L35 40l-11-6-11 6 2-13.2L6 18l12.5-1.5Z"/></svg>
+          <h3>Early-bird access</h3>
+          <p>Holders get early-bird access to the team's upcoming projects. First scoop, every time.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ───────────── TEAM ───────────── -->
+    <section class="section team" id="team" data-section>
+      <div class="section-head reveal">
+        <p class="eyebrow">Team</p>
+        <h2>The scoopers</h2>
+        <p>Four people behind the counter, one shared sweet tooth.</p>
+      </div>
+      <div class="team-grid">
+        <a class="member reveal" href="https://twitter.com/frank_at_work" target="_blank" rel="noopener" style="--c:var(--blue)">
+          <span class="avatar"><img src="images/web/team-podium.webp" width="420" height="420" loading="lazy" alt=""></span>
+          <h3>@frank</h3><p>Tech Lead</p>
+        </a>
+        <a class="member reveal" href="https://twitter.com/amoebaHere" target="_blank" rel="noopener" style="--c:var(--rose)">
+          <span class="avatar"><img src="images/web/team-amoeba.webp" width="420" height="420" loading="lazy" alt=""></span>
+          <h3>@amoeba</h3><p>Lead Artist</p>
+        </a>
+        <a class="member reveal" href="https://twitter.com/psedocode" target="_blank" rel="noopener" style="--c:var(--mint)">
+          <span class="avatar"><img src="images/web/team-code.webp" width="420" height="420" loading="lazy" alt=""></span>
+          <h3>@code</h3><p>Developer</p>
+        </a>
+        <a class="member reveal" href="https://twitter.com/soul_lives_here" target="_blank" rel="noopener" style="--c:var(--yellow)">
+          <span class="avatar"><img src="images/web/team-soul.webp" width="420" height="420" loading="lazy" alt=""></span>
+          <h3>@soul</h3><p>Community Manager</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ───────────── FAQ ───────────── -->
+    <section class="section faq" id="faq" data-section>
+      <div class="section-head reveal">
+        <p class="eyebrow">FAQ</p>
+        <h2>Frequently asked scoops</h2>
+      </div>
+      <div class="faq-list">
+        <details class="reveal" open>
+          <summary>What is sweetCone?</summary>
+          <p>sweetCone is an NFT collection of 5,555 colourful cones. Every cone is put together from hundreds of different, hand-picked traits: scoops, cones, faces, accessories and backgrounds.</p>
+        </details>
+        <details class="reveal">
+          <summary>What do I get for owning one?</summary>
+          <p>Access to the community of other sweetCone owners, where you can interact with each other, and early-bird access to upcoming projects.</p>
+        </details>
+        <details class="reveal">
+          <summary>Is the Cone Lab a mint?</summary>
+          <p>Nope! The Cone Lab is a toy, just for fun. Cones you build there are pictures, not NFTs, and they don't reserve anything in the collection. The "Lab #" is just a fun number for your creation.</p>
+        </details>
+        <details class="reveal">
+          <summary>Where can I follow along?</summary>
+          <p>Follow <a href="https://twitter.com/sweetconenft" target="_blank" rel="noopener">@sweetconenft</a> on Twitter. Discord is coming soon.</p>
+        </details>
+        <details class="reveal">
+          <summary>How do I get in touch?</summary>
+          <p>Drop a line to <a href="mailto:contact@sweetcone.art">contact@sweetcone.art</a>. We read everything, sprinkles included.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- ───────────── FOOTER ───────────── -->
+  <footer class="footer">
+    <svg class="drip" viewBox="0 0 1440 116" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H1440V26L1432 26Q1420 26 1420 38V41A15 15 0 0 1 1390 41V38Q1390 26 1378 26L1327 26Q1315 26 1315 38V55A15 15 0 0 1 1285 55V38Q1285 26 1273 26L1177 26Q1165 26 1165 38V77A15 15 0 0 1 1135 77V38Q1135 26 1123 26L1047 26Q1035 26 1035 38V43A15 15 0 0 1 1005 43V38Q1005 26 993 26L907 26Q895 26 895 38V97A15 15 0 0 1 865 97V38Q865 26 853 26L767 26Q755 26 755 38V51A15 15 0 0 1 725 51V38Q725 26 713 26L627 26Q615 26 615 38V69A15 15 0 0 1 585 69V38Q585 26 573 26L497 26Q485 26 485 38V41A15 15 0 0 1 455 41V38Q455 26 443 26L357 26Q345 26 345 38V91A15 15 0 0 1 315 91V38Q315 26 303 26L227 26Q215 26 215 38V45A15 15 0 0 1 185 45V38Q185 26 173 26L97 26Q85 26 85 38V73A15 15 0 0 1 55 73V38Q55 26 43 26L0 26Z"/></svg>
+    <div class="footer-inner">
+      <a class="logo logo-lg" href="#home" aria-label="Back to top">
+        <span style="color:#80B1FF">s</span><span style="color:#C5C5FF">w</span><span style="color:#A4A4F4">e</span><span style="color:#FFD2EA">e</span><span style="color:#FFC2DF">t</span><span style="color:#FFA4D4">C</span><span style="color:#FFCC99">o</span><span style="color:#FFE98A">n</span><span style="color:#79E8B3">e</span>
+      </a>
+      <p>For enquiries: <a class="mail" href="mailto:contact@sweetcone.art">contact@sweetcone.art</a></p>
+      <p class="fine">©2024 SWEETCONE | ALL RIGHTS RESERVED</p>
+      <p class="egg" aria-hidden="true">secret menu: type <kbd>y</kbd><kbd>u</kbd><kbd>m</kbd></p>
     </div>
+  </footer>
 
-  </div>
+  <dialog class="lightbox" id="lightbox" aria-label="Cone viewer">
+    <button class="icon-btn lb-close" aria-label="Close">✕</button>
+    <button class="icon-btn lb-nav lb-prev" aria-label="Previous cone">‹</button>
+    <figure><img id="lbImg" src="" alt=""><figcaption id="lbCap"></figcaption></figure>
+    <button class="icon-btn lb-nav lb-next" aria-label="Next cone">›</button>
+  </dialog>
 
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <canvas class="sprinkle-canvas" id="sprinkles" aria-hidden="true"></canvas>
+
+  <script src="lab.js"></script>
   <script src="script.js"></script>
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
-
 </body>
-
 </html>

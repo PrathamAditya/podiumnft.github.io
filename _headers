@@ -1,0 +1,14 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/images/web/*
+  Cache-Control: public, max-age=604800
+
+/noteworthy/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/nabana/*
+  Cache-Control: public, max-age=31536000, immutable
